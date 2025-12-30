@@ -166,6 +166,7 @@
 
             <!-- Card 1 -->
             <a href="https://mjamiv.github.io/roadway-lighting-designer/"
+                target="_blank" rel="noopener noreferrer"
                 class="glass-card group p-8 rounded-3xl animate-reveal" style="animation-delay: 0.1s">
                 <div class="flex justify-between items-start mb-10">
                     <div class="icon-box">
@@ -186,8 +187,9 @@
             </a>
 
             <!-- Card 2 -->
-            <a href="https://mjamiv.github.io/footing-designer/" class="glass-card group p-8 rounded-3xl animate-reveal"
-                style="animation-delay: 0.2s">
+            <a href="https://mjamiv.github.io/footing-designer/"
+                target="_blank" rel="noopener noreferrer"
+                class="glass-card group p-8 rounded-3xl animate-reveal" style="animation-delay: 0.2s">
                 <div class="flex justify-between items-start mb-10">
                     <div class="icon-box" style="background: rgba(255, 140, 0, 0.1); color: #FF8C00;">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -205,10 +207,11 @@
                 <p class="text-sm text-white/40 font-light leading-relaxed">structural foundation design tool for
                     precision footing calculations.</p>
             </a>
-            
+
             <!-- Card 3 -->
-            <a href="https://mjamiv.github.io/bridge-layout-tool/" class="glass-card group p-8 rounded-3xl animate-reveal"
-                style="animation-delay: 0.2s">
+            <a href="https://mjamiv.github.io/bridge-layout-tool/"
+                target="_blank" rel="noopener noreferrer"
+                class="glass-card group p-8 rounded-3xl animate-reveal" style="animation-delay: 0.2s">
                 <div class="flex justify-between items-start mb-10">
                     <div class="icon-box" style="background: rgba(255, 140, 0, 0.1); color: #FF8C00;">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -225,7 +228,7 @@
                 <h2 class="text-xl font-semibold mb-3 tracking-tight">bridge layout tool</h2>
                 <p class="text-sm text-white/40 font-light leading-relaxed">preliminarily layout bridge alignments and develop quick quantities</p>
             </a>
-            
+
         </div>
 
         <!-- Footer -->
@@ -234,6 +237,57 @@
         </footer>
 
     </div>
+
+    <!-- Force ALL links to always open in a new tab/window (default + locked) -->
+    <script>
+        (() => {
+            const LINK_SELECTOR = 'a[href]';
+
+            const lockLink = (a) => {
+                // Always force new tab/window + prevent reverse-tabnabbing
+                a.setAttribute('target', '_blank');
+                a.setAttribute('rel', 'noopener noreferrer');
+            };
+
+            const lockTree = (root) => {
+                if (!root || root.nodeType !== 1) return;
+
+                // If the root itself is a link, lock it
+                if (root.matches?.(LINK_SELECTOR)) lockLink(root);
+
+                // Lock any descendant links
+                root.querySelectorAll?.(LINK_SELECTOR).forEach(lockLink);
+            };
+
+            // Initial lock
+            const init = () => lockTree(document.body);
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init, { once: true });
+            } else {
+                init();
+            }
+
+            // Re-lock if any links are added later or someone tries to change target/rel
+            const observer = new MutationObserver((mutations) => {
+                for (const m of mutations) {
+                    if (m.type === 'childList') {
+                        m.addedNodes.forEach(lockTree);
+                    } else if (m.type === 'attributes') {
+                        const el = m.target;
+                        if (el?.matches?.(LINK_SELECTOR)) lockLink(el);
+                    }
+                }
+            });
+
+            observer.observe(document.documentElement, {
+                subtree: true,
+                childList: true,
+                attributes: true,
+                attributeFilter: ['target', 'rel']
+            });
+        })();
+    </script>
 
 </body>
 
