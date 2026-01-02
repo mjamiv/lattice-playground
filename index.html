@@ -68,6 +68,11 @@
             color: #ffffff;
         }
 
+        ::selection {
+            background: rgba(212, 175, 55, 0.25);
+            color: #fff;
+        }
+
         /* Refined Gold/Orange Orbs */
         .orb {
             position: fixed;
@@ -167,6 +172,111 @@
             -webkit-text-fill-color: transparent;
         }
 
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            color: #f6f6f6;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .pill-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #D4AF37, #FF8C00);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+        }
+
+        .hero-panel {
+            background: radial-gradient(circle at 10% 10%, rgba(212, 175, 55, 0.1), transparent 45%),
+                radial-gradient(circle at 90% 20%, rgba(255, 140, 0, 0.07), transparent 35%),
+                rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            border-radius: 22px;
+            padding: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        .stat-tile {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 14px 16px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 9999px;
+            background: rgba(212, 175, 55, 0.08);
+            color: #f7e7b4;
+            font-size: 11px;
+            letter-spacing: 0.04em;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .tag svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .card-footer {
+            margin-top: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 12px;
+        }
+
+        .card-footer .inline-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #f7e7b4;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+
+        .section-divider {
+            height: 1px;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+            margin: 24px 0;
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -192,29 +302,94 @@
     <div class="orb orb-2"></div>
     <div class="grid-overlay"></div>
 
-    <div class="relative z-10 max-w-6xl mx-auto px-8 py-24">
+    <div class="relative z-10 max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-24 space-y-16">
 
         <!-- Header -->
-        <header class="mb-20 text-center animate-reveal">
-            <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37] shadow-[0_0_8px_#D4AF37]"></span>
-                <span class="text-[10px] uppercase tracking-[0.3em] text-white/50 font-medium">applied ai initiative</span>
+        <header class="animate-reveal">
+            <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+                <div class="space-y-6 text-center md:text-left max-w-3xl">
+                    <div class="pill">
+                        <span class="pill-dot"></span>
+                        <span>applied ai initiative</span>
+                        <span class="hidden md:inline text-white/60">designing workflows that feel like magic</span>
+                    </div>
+                    <div class="space-y-4">
+                        <p class="text-white/50 uppercase tracking-[0.25em] text-xs md:text-sm">toolkit / prototypes / live demos</p>
+                        <h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
+                            lattice<span class="gold-gradient-text">.playground</span>
+                        </h1>
+                        <p class="text-white/60 text-lg font-light leading-relaxed max-w-2xl mx-auto md:mx-0">
+                            Engineering design tools and interactive workflows for fast experimentation, polished in a calm
+                            gold-on-night palette.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                        <span class="tag">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M12 6v6l4 2" />
+                            </svg>
+                            realtime calcs
+                        </span>
+                        <span class="tag">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M4 6h16M4 12h10m-6 6h12" />
+                            </svg>
+                            ui first
+                        </span>
+                        <span class="tag">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M12 3l7 4v6c0 4-7 8-7 8s-7-4-7-8V7z" />
+                            </svg>
+                            civil + structures
+                        </span>
+                    </div>
+                </div>
+
+                <div class="hero-panel w-full md:w-[360px] space-y-5">
+                    <div class="flex items-center justify-between">
+                        <p class="text-white/60 text-sm">Releases cadence</p>
+                        <div class="inline-flex items-center gap-2 text-[#D4AF37] text-xs uppercase tracking-[0.18em] font-semibold">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37] shadow-[0_0_10px_#D4AF37]"></span>
+                            weekly
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="stat-tile">
+                            <span class="stat-value">04</span>
+                            <span class="stat-label">tools live</span>
+                        </div>
+                        <div class="stat-tile">
+                            <span class="stat-value">12k</span>
+                            <span class="stat-label">sim runs</span>
+                        </div>
+                        <div class="stat-tile">
+                            <span class="stat-value">24/7</span>
+                            <span class="stat-label">uptime</span>
+                        </div>
+                    </div>
+                    <div class="section-divider"></div>
+                    <div class="space-y-3">
+                        <p class="text-white/70 text-sm leading-relaxed">Curated prototypes to test ideas in lighting,
+                            structural engineering, and playful distractions—all under the same minimal gold glow.</p>
+                        <div class="flex items-center gap-3 text-white/60 text-sm">
+                            <span class="inline-block w-1 h-8 rounded-full bg-gradient-to-b from-[#D4AF37] to-[#FF8C00]"></span>
+                            tap a tile to open the live experience in a new tab
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h1 class="text-6xl md:text-7xl font-bold tracking-tighter mb-6">
-                lattice<span class="gold-gradient-text">.playground</span>
-            </h1>
-            <p class="text-white/40 max-w-lg mx-auto text-lg font-light leading-relaxed">
-                engineering design tools and interactive workflows for testing
-            </p>
         </header>
 
         <!-- Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
             <!-- Card 1 -->
             <a href="https://mjamiv.github.io/roadway-lighting-designer/"
                 class="glass-card group p-8 rounded-3xl animate-reveal" style="animation-delay: 0.1s">
-                <div class="flex justify-between items-start mb-10">
+                <div class="flex justify-between items-start mb-8">
                     <div class="icon-box">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -227,15 +402,34 @@
                             d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                 </div>
-                <h2 class="text-xl font-semibold mb-3 tracking-tight">roadway lighting designer</h2>
-                <p class="text-sm text-white/40 font-light leading-relaxed">Interactive analysis and optimization for
-                    roadway illumination systems.</p>
+                <div class="card-meta">
+                    <span class="tag">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M12 4v4m0 0l3 3m-3-3L9 11m3-3a6 6 0 100 12" />
+                        </svg>
+                        luminance maps
+                    </span>
+                    <span class="tag">design trials</span>
+                </div>
+                <h2 class="text-2xl font-semibold mb-3 tracking-tight">roadway lighting designer</h2>
+                <p class="text-sm text-white/60 font-light leading-relaxed">Interactive analysis and optimization for
+                    roadway illumination systems with side-by-side photometric comparisons.</p>
+                <div class="card-footer">
+                    <span>recommended: desktop or tablet</span>
+                    <span class="inline-cta">Open tool
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 12h14M13 5l7 7-7 7" />
+                        </svg>
+                    </span>
+                </div>
             </a>
 
             <!-- Card 2 -->
             <a href="https://mjamiv.github.io/footing-designer/" class="glass-card group p-8 rounded-3xl animate-reveal"
                 style="animation-delay: 0.2s">
-                <div class="flex justify-between items-start mb-10">
+                <div class="flex justify-between items-start mb-8">
                     <div class="icon-box" style="background: rgba(255, 140, 0, 0.1); color: #FF8C00;">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -248,15 +442,34 @@
                             d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                 </div>
-                <h2 class="text-xl font-semibold mb-3 tracking-tight">footing designer</h2>
-                <p class="text-sm text-white/40 font-light leading-relaxed">structural foundation design tool for
-                    precision footing calculations.</p>
+                <div class="card-meta">
+                    <span class="tag">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M4 10h16M8 6h8m-9 8h10m-7 4h4" />
+                        </svg>
+                        load paths
+                    </span>
+                    <span class="tag">ACI friendly</span>
+                </div>
+                <h2 class="text-2xl font-semibold mb-3 tracking-tight">footing designer</h2>
+                <p class="text-sm text-white/60 font-light leading-relaxed">Structural foundation design tool for precision
+                    footing calculations, governing cases, and printable summaries.</p>
+                <div class="card-footer">
+                    <span>ideal for early-stage sizing</span>
+                    <span class="inline-cta">Open tool
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 12h14M13 5l7 7-7 7" />
+                        </svg>
+                    </span>
+                </div>
             </a>
 
             <!-- Card 3 -->
             <a href="https://mjamiv.github.io/bridge-layout-tool/" class="glass-card group p-8 rounded-3xl animate-reveal"
-                style="animation-delay: 0.2s">
-                <div class="flex justify-between items-start mb-10">
+                style="animation-delay: 0.3s">
+                <div class="flex justify-between items-start mb-8">
                     <div class="icon-box" style="background: rgba(255, 140, 0, 0.1); color: #FF8C00;">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -269,14 +482,34 @@
                             d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                 </div>
-                <h2 class="text-xl font-semibold mb-3 tracking-tight">bridge layout tool</h2>
-                <p class="text-sm text-white/40 font-light leading-relaxed">preliminarily layout bridge alignments and develop quick quantities</p>
+                <div class="card-meta">
+                    <span class="tag">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M3 7h18M5 12h14M7 17h10" />
+                        </svg>
+                        alignments
+                    </span>
+                    <span class="tag">span strategy</span>
+                </div>
+                <h2 class="text-2xl font-semibold mb-3 tracking-tight">bridge layout tool</h2>
+                <p class="text-sm text-white/60 font-light leading-relaxed">Preliminarily layout bridge alignments, test span
+                    schemes, and surface quick quantities in a clean dashboard.</p>
+                <div class="card-footer">
+                    <span>best with multiple concept options</span>
+                    <span class="inline-cta">Open tool
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 12h14M13 5l7 7-7 7" />
+                        </svg>
+                    </span>
+                </div>
             </a>
 
             <!-- Card 4 -->
             <a href="https://mjamiv.github.io/Maze2/" class="glass-card group p-8 rounded-3xl animate-reveal"
-                style="animation-delay: 0.2s">
-                <div class="flex justify-between items-start mb-10">
+                style="animation-delay: 0.4s">
+                <div class="flex justify-between items-start mb-8">
                     <div class="icon-box" style="background: rgba(255, 140, 0, 0.1); color: #FF8C00;">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -289,15 +522,35 @@
                             d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                 </div>
-                <h2 class="text-xl font-semibold mb-3 tracking-tight">maze game</h2>
-                <p class="text-sm text-white/40 font-light leading-relaxed">play a game while you vibe</p>
+                <div class="card-meta">
+                    <span class="tag">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                d="M4 7h16m-8 0v10m-5-5h10" />
+                        </svg>
+                        palette cleanse
+                    </span>
+                    <span class="tag">keyboard ready</span>
+                </div>
+                <h2 class="text-2xl font-semibold mb-3 tracking-tight">maze game</h2>
+                <p class="text-sm text-white/60 font-light leading-relaxed">A quick break between models—navigate the maze
+                    while the gradient glow keeps your focus.</p>
+                <div class="card-footer">
+                    <span>refresh for new layouts</span>
+                    <span class="inline-cta">Play now
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 12h14M13 5l7 7-7 7" />
+                        </svg>
+                    </span>
+                </div>
             </a>
-            
+
         </div>
 
         <!-- Footer -->
-        <footer class="mt-32 text-center animate-reveal" style="animation-delay: 0.8s;">
-            <p class="text-[10px] uppercase tracking-[0.5em] text-white/20 font-medium italic">don't forget to touch some grass</p>
+        <footer class="text-center animate-reveal" style="animation-delay: 0.8s;">
+            <p class="text-[10px] uppercase tracking-[0.5em] text-white/30 font-medium italic">don't forget to touch some grass</p>
         </footer>
 
     </div>
